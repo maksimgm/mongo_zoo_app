@@ -1,0 +1,6 @@
+<% include ../partials/header%>
+  <%zoos.forEach(function(zoo){%>
+    <a href="/zoos/<%=zoos._id%>"><%=zoo.name%><%=zoo.location%></a>
+  <%});%>
+  <a href="/zoos/new">Add A Zoo</a>
+<% include ../partials/footer%>

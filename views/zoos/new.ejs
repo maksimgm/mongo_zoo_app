@@ -1,0 +1,13 @@
+<% include partials/header%>
+<form action="/zoos" method="POST">
+  <p>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" value="name">
+  </p>
+  <p>
+    <label for="location">Location:</label>
+    <input type="text" name="location" id="location" value="location">
+  </p>
+  <input type="submit" value="Add">
+</form>
+<% include partials/footer%>

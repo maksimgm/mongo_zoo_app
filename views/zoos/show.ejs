@@ -1,0 +1,22 @@
+<% include partials/header%>
+<div>
+  <h3>Name:<%=zoo.name%></h3>
+  <h3>Location:<%=zoo.location%></h3>
+</div>
+<div>
+  <%animals.forEach(function(animal){%>
+    <a href="/zoos/<%zoo._id%>/animal"><%=animal.name%><%=animal.species%><%=animal.age%></a>
+    <img src="<%=animal.photo%>" alt="Animal Photo"> 
+  <%});%>
+</div>
+<div>
+  <a href="/zoos/<%=zoo._id%>/edit">Edit</a>
+  <form action="">
+    <input type="submit">
+    <a href="/zoos/<%=zoo._id%>?_method='DELETE'" method="POST">Delete</a>
+  </form>
+</div>  
+<div>
+  <a href="/zoos">See all zoos</a>
+</div>
+<% include partials/footer%>

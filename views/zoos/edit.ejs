@@ -1,0 +1,14 @@
+<% include partials/header%>
+<h3>Edit</h3>
+<form action="/zoos/<%=zoos._id%>?_method='PUT'" method="POST">
+  <p>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="zoo[name]" value="name">
+  </p>
+  <p>
+    <label for="location">Location:</label>
+    <input type="text" name="location" id="zoo[location]" value="location">
+  </p>
+  <input type="submit" value="Add">
+</form>
+<% include partials/footer%>

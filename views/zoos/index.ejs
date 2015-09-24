@@ -1,0 +1,9 @@
+<% include partials/header%>
+<%zoos.forEach(funtion(zoo){%>
+  <p>
+    <a href="/zoos/<%=zoos._id%>"><%=zoo.name%><%=zoo.location%></a>
+  </p>
+<%})%>
+
+<a href="/zoos/new">Add a new zoo</a>
+<% include partials/footer%>

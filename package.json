@@ -1,0 +1,27 @@
+{
+  "name": "mongo_zoo_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maksimgm/mongo_zoo_app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maksimgm/mongo_zoo_app/issues"
+  },
+  "homepage": "https://github.com/maksimgm/mongo_zoo_app#readme",
+  "dependencies": {
+    "body-parser": "^1.14.0",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.1.8",
+    "morgan": "^1.6.1"
+  }
+}

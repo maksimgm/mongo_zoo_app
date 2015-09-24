@@ -16,5 +16,5 @@ zooSchema.pre("remove",function(callback){
 });
 
 
-var Zoo = mongoose.model("Zoo", zooschema);
+var Zoo = mongoose.model("Zoo", zooSchema);
 module.exports = Zoo;

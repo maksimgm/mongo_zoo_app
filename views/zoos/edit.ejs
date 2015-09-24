@@ -1,14 +1,14 @@
-<% include partials/header%>
+<% include ../partials/header%>
 <h3>Edit</h3>
-<form action="/zoos/<%=zoos._id%>?_method='PUT'" method="POST">
+<form action="/zoos/<%=zoo._id%>?_method=PUT" method="POST">
   <p>
     <label for="name">Name:</label>
-    <input type="text" name="name" id="zoo[name]" value="name">
+    <input type="text" name="zoo[name]" id="name" value="<%=zoo.name%>">
   </p>
   <p>
     <label for="location">Location:</label>
-    <input type="text" name="location" id="zoo[location]" value="location">
+    <input type="text" name="zoo[location]" id="location" value="<%=zoo.location%>">
   </p>
-  <input type="submit" value="Add">
+  <input type="submit" value="Update">
 </form>
-<% include partials/footer%>
+<% include ../partials/footer%>

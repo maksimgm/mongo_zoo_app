@@ -6,10 +6,10 @@ var animalSchema = new mongoose.Schema({
   age: Number,
   photo: String,
   zoos:{
-    type: mongoose.Schema.Type.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "Zoo"
   }
 });
 
-var Animal = mongoose.model("Animal", animalschema);
+var Animal = mongoose.model("Animal", animalSchema);
 module.exports = Animal;

@@ -10,11 +10,10 @@ var zooSchema = new mongoose.Schema({
   }]
 });
 
-zooSchema.pre("remove",function(callback){
-  Animal.remove({author: this._id}).exec();
-  callback();
+zooSchema.pre('remove', function(next) {
+    Animal.remove({zoo: this._id}).exec();
+    next();
 });
-
 
 var Zoo = mongoose.model("Zoo", zooSchema);
 module.exports = Zoo;

@@ -19,7 +19,6 @@ app.get('/', function(req,res){
   res.redirect("/zoos");
 });
 
-
 app.get('/zoos', function(req,res){
   db.Zoo.find({},
     function (err, zoos) {
@@ -57,8 +56,8 @@ app.post('/zoos', function(req,res){
 
 // update
 app.get('/zoos/:id/edit', function(req,res){
-  db.Zoo.findById(req.params.id).populate('animals').exec(
-     function (err, zoo) {
+  db.Zoo.findById(req.params.id).populate('animals')
+     .exec(function (err, zoo) {
          res.render("zoos/edit", {zoo:zoo});
      });
 });
@@ -93,7 +92,8 @@ app.delete('/zoos/:id', function(req,res){
 
 // index
 app.get('/zoos/:zoo_id/animals', function(req,res){
-  db.Zoo.findById(req.params.zoo_id).populate('animals').exec(function(err,zoo){
+  db.Zoo.findById(req.params.zoo_id).populate('animals')
+    .exec(function(err,zoo){
     res.render("animals/index", {zoo:zoo});
   });
 });
@@ -107,27 +107,26 @@ app.get('/zoos/:zoo_id/animals/new', function(req,res){
 });
 
 // show
-app.get('/animals/:id', function(req,res){
+app.get('/zoos/:zoo_id/animals/:id', function(req,res){
   db.Animal.findById(req.params.id)
     .populate('zoo')
     .exec(function(err,animal){
-      console.log(animal.zoo);
       res.render("animals/show", {animal:animal});
     });
 });
 
 // create
 app.post('/zoos/:zoo_id/animals', function(req,res){
-  db.Animal.create({name:req.body.name, species:req.body.species, age:req.body.age, photo:req.body.photo}, function(err, animals){
+  db.Animal.create(req.body.animal, function(err, animal){
     if(err) {
       console.log(err);
       res.render("animals/new");
     }
     else {
       db.Zoo.findById(req.params.zoo_id,function(err,zoo){
-        zoo.animals.push(animals);
-        animals.zoo = zoo._id;
-        animals.save();
+        zoo.animals.push(animal);
+        animal.zoo = zoo._id;
+        animal.save();
         zoo.save();
         res.redirect("/zoos/"+ req.params.zoo_id +"/animals");
       });
@@ -136,13 +135,14 @@ app.post('/zoos/:zoo_id/animals', function(req,res){
 });
 
 // edit
-app.get('/animals/:id/edit', function(req,res){
-  db.Animal.findById(req.params.id, function(err,animal){
+app.get('/zoos/:zoo_id/animals/:id/edit', function(req,res){
+  db.Animal.findById(req.params.id,function(err,animal){
       res.render("animals/edit", {animal:animal});
     });
 });
 
-app.put('/animals/:id', function(req,res){
+// Update
+app.put('/zoos/:zoo_id/animals/:id', function(req,res){
  db.Animal.findByIdAndUpdate(req.params.id, req.body.animal,
      function (err, animal) {
       console.log(animal);
@@ -155,8 +155,8 @@ app.put('/animals/:id', function(req,res){
      });
 });
 
-// DESTROY
-app.delete('/animals/:id', function(req,res){
+// Delete
+app.delete('/zoos/:zoo_id/animals/:id', function(req,res){
  db.Animal.findByIdAndRemove(req.params.id,
       function (err, animal) {
         if(err) {
@@ -164,17 +164,18 @@ app.delete('/animals/:id', function(req,res){
           res.render("animals/edit");
         }
         else {
-          res.redirect("/zoos/" + animal.zoo  + "/animals");
+          res.redirect("/zoos/" + req.params.zoo_id + "/animals");
         }
       });
 });
 
-// CATCH ALL
+// Catch all
 app.get('*', function(req,res){
-  res.render('errors/404');
+  res.render('404');
 });
 
-// START SERVER
+
+
 app.listen(3000, function(){
   console.log("Server is listening on port 3000");
 });

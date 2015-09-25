@@ -1,3 +1,24 @@
-<% include partials/header%>
-
-<% include partials/footer%>
+<% include ../partials/header%>
+<h3>Add animal</h3>
+<form action="/zoos/<%= zoo.id %>/animals" method="POST">
+  <div>
+    <label for="name">Name:</label>
+    <input autofocus  type="text" name="animal[name]" id="name">
+  </div>
+  <div>
+    <label for="species">Species:</label>
+    <input type="text" name="animal[species]" id="species">
+  </div>
+  <div>
+    <label for="photo">Photo:</label>
+    <input type="text" name="animal[photo]" id="photo">
+  </div>
+  <div>
+    <label for="age">Age:</label>
+    <input type="text" name="animal[age]" id="age">
+  </div>
+  <div>
+    <input type="submit" value="Add!">
+  </div>
+  </form>
+<% include ../partials/footer%>

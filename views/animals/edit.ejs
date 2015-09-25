@@ -1,3 +1,22 @@
-<% include partials/header%>
-
-<% include partials/footer%>
+<% include ../partials/header%>
+<h3>Edit animal</h3>
+<form action="/zoos/<%=animal.zoo%>/animals/<%= animal.id %>?_method=PUT" method="POST">
+  <p>
+    <label for="name">Name:</label>
+    <input type="text" name="animal[name]" id="name" value="<%=animal.name%>">
+  </p>
+  <p>
+    <label for="location">Species:</label>
+    <input type="text" name="animal[species]" id="location" value="<%=animal.species%>">
+  </p>
+  <p>
+    <label for="age">Age:</label>
+    <input type="text" name="animal[age]" id="age" value="<%=animal.age%>">
+  </p>
+  <p>
+    <label for="photo">Photo:</label>
+    <input type="text" name="animal[photo]" id="photo" value="<%=animal.photo%>">
+  </p>
+  <input type="submit" value="Update">
+</form>
+<% include ../partials/footer%>

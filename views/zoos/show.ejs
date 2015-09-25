@@ -1,22 +1,32 @@
 <% include ../partials/header%>
-<div>
-  <h3>Name:<%= zoo.name %></h3>
-  <h3>Location:<%= zoo.location %></h3>
-</div>
-<div>
-  <% zoo.animals.forEach(function(animal){ %>
-    <a href="/zoos/<%=zoo.id%>/animals/<%=animal.id%>"><%=animal.name%><%=animal.species%><%=animal.age%></a>
-    <img src="<%=animal.photo%>" alt="Animal Photo"> 
-  <% }); %>
-</div>
-<div>
-  <a href="/zoos/<%=zoo._id%>/edit" class="btn btn-info btn-block">Edit</a>
-  <a href="/zoos/<%=zoo._id%>/animals/new">Add new animal</a>
-  <form action="/zoos/<%=zoo._id%>?_method=DELETE" method="POST">
-    <input type="submit" value="Delete" class="btn btn-alert btn-block">
-  </form>
-</div>  
-<div>
-  <a href="/zoos" class="btn btn-success btn-block">See all zoos</a>
+<div class="container">
+  <div class="col-xs-10 col-xs-offset-1">
+    <h3 class="text-center">Name:<%= zoo.name %></h3>
+    <h3 class="text-center">Location:<%= zoo.location %></h3>
+
+    <% zoo.animals.forEach(function(animal){ %>
+      <div class="alert alert-info text-center" role="alert"><a href="/zoos/<%=zoo.id%>/animals/<%=animal.id%>">Animal Name:<%=animal.name%></a>
+      </div>
+      <div class="alert alert-info text-center" role="alert">Animal Age:<%=animal.age%></div>
+
+      <div class="alert alert-info text-center" role="alert">Species:<%=animal.species%></div>
+      <div class="alert alert-info text-center" role="alert">
+        <img src="<%=animal.photo%>" alt="Animal Photo" height="150px" width="170px"> 
+      </div> 
+    <% }); %>
+
+    <p>
+      <a href="/zoos/<%=zoo._id%>/edit" class="btn btn-info btn-block">Edit</a>
+    </p>
+    <p>
+      <a href="/zoos/<%=zoo._id%>/animals/new" class="btn btn-info btn-block">Add new animal</a>
+    </p>
+    <p>
+      <form action="/zoos/<%=zoo._id%>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete" class="btn btn-danger btn-block">
+      </form>
+    </p>
+    <a href="/zoos" class="btn btn-success btn-block">See all zoos</a>
+  </div>
 </div>
 <% include ../partials/footer%>

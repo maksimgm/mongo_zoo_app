@@ -1,8 +1,8 @@
 <% include ../partials/header%>
 <%zoo.animals.forEach(function(animal){%>
-  <p>
+  <div class="alert alert-info text-center" role="alert">
     <a href="/zoos/<%=zoo.id%>/animals/<%=animal._id%>"><%=animal.name%><%=animal.species%><%=animal.age%> <img src="<%=animal.photo%>" alt="animal photo"></a>
-  </p>
+  </div>
 <%})%>
 <a href="/zoos/<%=zoo._id%>/animals/new" class="btn btn-success btn-block">Add a new animal</a>
 <a href="/">See all zoos</a>

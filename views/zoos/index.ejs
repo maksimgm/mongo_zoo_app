@@ -1,8 +1,14 @@
 <% include ../partials/header%>
-<%zoos.forEach(function(zoo){%>
-  <p>
-    <a href="/zoos/<%=zoo._id%>"><%=zoo.name%><%=zoo.location%></a>
-  </p>
-<%})%>
-<a href="/zoos/new" class="btn btn-success btn-block">Add a new zoo</a>
+<div class="container">
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class="alert alert-info text-center" role="alert">
+      <%zoos.forEach(function(zoo){%>
+        <p>
+          <a href="/zoos/<%=zoo._id%>"><%=zoo.name%><%=zoo.location%></a>
+        </p>
+      <%})%>
+    </div>
+      <a href="/zoos/new" class="btn btn-success btn-block">Add a new zoo</a>
+  </div>
+</div>
 <% include ../partials/footer%>

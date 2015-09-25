@@ -1,24 +1,27 @@
 <% include ../partials/header%>
-<h3>Add animal</h3>
-<form action="/zoos/<%= zoo.id %>/animals" method="POST">
-  <div>
-    <label for="name">Name:</label>
-    <input autofocus  type="text" name="animal[name]" id="name">
+<div class="container">
+  <div class="col-xs-10 col-xs-offset-1">
+    <h3 class="text-center">Add animal</h3>
+    <form action="/zoos/<%= zoo.id %>/animals" method="POST"  class="form-horizontal">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input autofocus  type="text" name="animal[name]" id="name" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="species">Species:</label>
+        <input type="text" name="animal[species]" id="species" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="photo">Photo:</label>
+        <input type="text" name="animal[photo]" id="photo" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="text" name="animal[age]" id="age" class="form-control">
+      </div>
+        <input type="submit" value="Add!" class="btn btn-default btn-block btn-info">
+    </form>
   </div>
-  <div>
-    <label for="species">Species:</label>
-    <input type="text" name="animal[species]" id="species">
-  </div>
-  <div>
-    <label for="photo">Photo:</label>
-    <input type="text" name="animal[photo]" id="photo">
-  </div>
-  <div>
-    <label for="age">Age:</label>
-    <input type="text" name="animal[age]" id="age">
-  </div>
-  <div>
-    <input type="submit" value="Add!">
-  </div>
-  </form>
+</div>
+
 <% include ../partials/footer%>

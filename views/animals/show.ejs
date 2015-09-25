@@ -1,16 +1,26 @@
 <% include ../partials/header%>
-<h3>Name: <%=animal.name%></h3>
-<div>
-  <a href="/zoos/<%=animal.zoo._id%>/animals/<%= animal._id%>/edit">Edit <%= animal.name%></a>
+<div class="container">
+  <div class="col-xs-10 col-xs-offset-1">
+
+    <h3 class="text-center">Name:<%=animal.name%></h3>
+
+
+    <div class="alert alert-info text-center" role="alert">Species : <%= animal.species%></div>
   
-    Species : <%= animal.species%>
+  
+    <div class="alert alert-info text-center" role="alert">Age : <%= animal.age%></div>
   
   
-    Age : <%= animal.age%>
+    <div class="alert alert-info text-center" role="alert"> <img src="<%=animal.photo%>" alt="animal photo" height="150px" width="170px"> </div>
   
-    Photo: <img src="<%=animal.photo%>" alt=""> 
+  <p>
+    <a href="/zoos/<%=animal.zoo._id%>/animals/<%= animal._id%>/edit" class="btn btn-success btn-block">EDIT</a>
+  </p>
+  <p>
     <form action="/zoos/<%= animal.zoo._id%>/animals/<%=animal._id%>?_method=DELETE" method="POST">
-      <input type="submit" value="DELETE">
+      <input type="submit" value="DELETE" class="btn btn-danger btn-block">
     </form>
+  </p>
+  </div>
 </div>
 <% include ../partials/footer%>
